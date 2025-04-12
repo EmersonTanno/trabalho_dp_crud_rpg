@@ -24,7 +24,7 @@ export class ItemMagicoController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateItemMagicoDto: UpdateItemMagicoDto) {
-    return this.itemMagicoService.update(+id, updateItemMagicoDto);
+    return this.itemMagicoService.update(id, updateItemMagicoDto);
   }
 
   @Delete(':id')

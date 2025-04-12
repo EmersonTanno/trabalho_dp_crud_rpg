@@ -15,7 +15,8 @@ export class ItemMagicoService {
   ) {}
   
   async create(createItemMagicoDto: CreateItemMagicoDto) {
-    try{
+    try
+    {
       const itemExistente = await this.ItemMagicoModel.findOne({nome: createItemMagicoDto.nome})
       if(itemExistente)
       {
@@ -59,8 +60,21 @@ export class ItemMagicoService {
    
   }
 
-  update(id: number, updateItemMagicoDto: UpdateItemMagicoDto) {
-    return `This action updates a #${id} itemMagico`;
+  async update(id: string, updateItemMagicoDto: UpdateItemMagicoDto) {
+    try
+    {
+      const findedItem = await this.ItemMagicoModel.findById(id);
+
+      if(!findedItem)
+      {
+        throw new Error(`Item com ID ${id} não encontrado`);
+      }
+
+      return await this.ItemMagicoModel.findByIdAndUpdate(id, updateItemMagicoDto, {new: true})
+    } catch(e)
+    {
+      throw new InternalServerErrorException(e.message);
+    }
   }
 
   remove(id: number) {
