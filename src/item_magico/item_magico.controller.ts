@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { ItemMagicoService } from './item_magico.service';
 import { CreateItemMagicoDto } from './dto/create-item_magico.dto';
 import { UpdateItemMagicoDto } from './dto/update-item_magico.dto';
@@ -22,13 +22,13 @@ export class ItemMagicoController {
     return this.itemMagicoService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateItemMagicoDto: UpdateItemMagicoDto) {
     return this.itemMagicoService.update(id, updateItemMagicoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.itemMagicoService.remove(+id);
+    return this.itemMagicoService.remove(id);
   }
 }

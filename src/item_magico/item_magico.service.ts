@@ -70,6 +70,26 @@ export class ItemMagicoService {
         throw new Error(`Item com ID ${id} não encontrado`);
       }
 
+      if(updateItemMagicoDto.nome == "")
+      {
+        throw new Error("Itens precisam possuir um nome");
+      }
+
+      if(updateItemMagicoDto.tipo != "Amuleto" && updateItemMagicoDto.tipo != "Armadura" && updateItemMagicoDto.tipo != "Arma" && updateItemMagicoDto.tipo != undefined)
+      {
+        throw new Error(`Item com Tipo ${updateItemMagicoDto.tipo} não corresponde aos tipos existentes`);
+      }
+
+      if(updateItemMagicoDto.forca !> 10 || updateItemMagicoDto.defesa !> 10)
+      {
+        throw new Error("Itens não podem possuir ATAQUE ou DEFESA maiores que 10");
+      }
+
+      if(updateItemMagicoDto.forca !< 10 || updateItemMagicoDto.defesa !< 10)
+      {
+        throw new Error("Itens não podem possuir ATAQUE ou DEFESA menores que 0");
+      }
+
       return await this.ItemMagicoModel.findByIdAndUpdate(id, updateItemMagicoDto, {new: true})
     } catch(e)
     {
@@ -77,7 +97,22 @@ export class ItemMagicoService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} itemMagico`;
+  async remove(id: string) {
+    try
+    {
+      const findedItem = await this.ItemMagicoModel.findById(id);
+
+      if(!findedItem)
+      {
+        throw new Error(`Item com ID ${id} não encontrado`);
+      }
+
+      await this.ItemMagicoModel.findByIdAndDelete(id);
+
+      return `Item ${findedItem.nome} deletado com sucesso`;
+    } catch (e)
+    {
+      throw new NotFoundException(e.message);
+    }
   }
 }
