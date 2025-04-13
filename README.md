@@ -1,3 +1,15 @@
+# Tecnologias Utilizadas 
+- NestJS 
+
+- Mongoose
+
+- MongoDB
+
+# Instalação e Execução do Projeto
+
+- npm install
+- npm run start:dev
+
 # Documentação via Postman
 A documentação completa dos endpoints da API está disponível na coleção do Postman abaixo. Nela é possível testar todas as rotas implementadas, com exemplos de requisições e respostas. <br><br>
 [Documentação da API](https://github.com/user-attachments/files/19722206/RPG.postman_collection.json)<br><br>
