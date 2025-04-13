@@ -16,26 +16,26 @@ A documentação completa dos endpoints da API está disponível na coleção do
 
 
 Endpoints contemplados:
-- Cadastrar Personagem
+- Cadastrar Personagem `POST /personagem`
 
-- Cadastrar Item Mágico
+- Cadastrar Item Mágico `POST /item-magico`
 
-- Listar Personagens
+- Listar Personagens `GET /personagem`
 
-- Buscar Personagem por Identificador
+- Buscar Personagem por Identificador `GET /personagem/:id`
 
-- Atualizar Nome Aventureiro por Identificador
+- Atualizar Nome Aventureiro por Identificador `PUT /personagem/newAdventurerName/:id`
 
-- Remover Personagem
+- Remover Personagem `DELETE /personagem/:id`
   
-- Listar Itens Mágicos
+- Listar Itens Mágicos `GET /item-magico`
 
-- Buscar Item Mágico por Identificador
+- Buscar Item Mágico por Identificador `GET /item-magico/:id`
 
-- Adicionar Item Mágico ao Personagem
+- Adicionar Item Mágico ao Personagem `PUT /personagem/addItem/:id`
 
-- Listar Itens Mágicos por Personagem
+- Listar Itens Mágicos por Personagem `GET /personagem/characterItens/:id`
 
-- Remover Item Mágico do Personagem
+- Remover Item Mágico do Personagem `PUT /personagem/removeItem/:id`
 
-- Buscar Amuleto do Personagem
+- Buscar Amuleto do Personagem `GET /personagem/amuleto/:id`
